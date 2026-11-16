@@ -1,0 +1,5 @@
+Coloca aquí:
+  app-screen.jpg   -> la captura de la app que aparece dentro del celular en la página de inicio
+                      (descárgala de tu Drive y guárdala con ese nombre exacto).
+  aula.apk         -> (opcional) el APK, y luego pon "assets/aula.apk" en APK_URL de js/config.js
+Si app-screen.jpg no existe, el sitio usa la imagen de Drive configurada en js/config.js.

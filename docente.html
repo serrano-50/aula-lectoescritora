@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Panel docente | Aula Lectoescritora</title>
+<meta name="description" content="Panel docente: publica actividades en las ocho unidades y revisa las entregas.">
+<meta name="theme-color" content="#f3e8d4">
+<meta property="og:title" content="Panel docente | Aula Lectoescritora"><meta property="og:description" content="Panel docente: publica actividades en las ocho unidades y revisa las entregas."><meta property="og:type" content="website">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;0,7..72,700;1,7..72,400;1,7..72,600&display=swap">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body data-page="docente">
+<a class="skip" href="#contenido">Saltar al contenido</a>
+<header class="topbar">
+<a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true">A</span><span>Aula <span class="brand-light">Lectoescritora</span></span></a>
+<button class="nav-toggle" type="button" aria-expanded="false" aria-controls="menu">Menú</button>
+<nav id="menu" aria-label="Principal"><a href="index.html">Inicio</a><a href="unidades.html">Unidades</a><a href="estudiante.html">Estudiantes</a><a class="nav-cta" href="docente.html" aria-current="page">Panel docente</a></nav>
+</header>
+
+<main id="contenido" class="dashboard wrap">
+  <section class="gate" id="gate">
+    <div class="panel gate-card">
+      <div class="lock emo" aria-hidden="true">🔒</div>
+      <h1 style="font-size:2rem">Panel docente</h1>
+      <p class="muted">Este espacio es solo para docentes. Escribe la clave de acceso para continuar.</p>
+      <form id="gate-form">
+        <label>Clave de acceso<input type="password" name="clave" required autocomplete="current-password" inputmode="numeric" aria-describedby="gate-feedback"></label>
+        <button class="btn btn-primary" type="submit" style="width:100%">Entrar</button>
+        <p class="feedback" id="gate-feedback" aria-live="polite"></p>
+      </form>
+      <noscript><p class="feedback bad">Activa JavaScript para usar el panel docente.</p></noscript>
+    </div>
+  </section>
+
+  <div id="teacher-app" hidden>
+    <div class="page-head"><div><span class="kicker">Espacio de enseñanza</span><h1>Panel docente</h1><p class="muted">Publica actividades en cualquiera de las ocho unidades. Los estudiantes las ven al instante.</p></div><button class="logout" id="logout" type="button">Cerrar sesión</button></div>
+    <div class="demo-banner" id="demo-note" hidden><b>Modo demostración.</b> El aula todavía no está conectada a Google Drive: lo que hagas aquí solo se guarda en este navegador. Para conectarla sigue la guía del archivo README.md.</div>
+    <div class="dash-layout">
+      <section class="panel" id="crear">
+        <div class="panel-title"><h2>Crear actividad</h2></div>
+        <form id="activity-form">
+          <label>Título de la actividad<input name="title" id="title" required maxlength="120" placeholder="Ej. Detectives de noticias"></label>
+          <div class="form-row">
+            <label>Unidad<select name="unit" id="unit-select" required><option value="">Elegir unidad</option><option value="1">1. Investigamos noticias</option><option value="2">2. Leemos narraciones</option><option value="3">3. Inventamos acrósticos</option><option value="4">4. Conozcamos los mitos</option><option value="5">5. Dramatizamos historias</option><option value="6">6. Contamos leyendas</option><option value="7">7. Leemos crónicas</option><option value="8">8. Escribimos reportajes</option></select></label>
+            <label>Fecha de entrega<input name="due" type="date"></label>
+          </div>
+          <label>Objetivo<textarea name="objective" rows="2" maxlength="400" placeholder="¿Qué aprendizaje se busca alcanzar?"></textarea></label>
+          <label>Instrucciones<textarea name="instructions" rows="5" required maxlength="4000" placeholder="Describe lo que deben realizar los estudiantes…"></textarea></label>
+          <label>Enlace de material o video (opcional)<input name="resource" type="url" placeholder="https://…"></label>
+          <label>Archivo adjunto (opcional)
+            <span class="dropzone"><span class="ico emo" aria-hidden="true">📎</span><span class="t">Elegir PDF, Word o imagen<small>Se guarda en la carpeta de Drive de actividades</small></span><input type="file" id="attachment" accept=".pdf,.doc,.docx,.png,.jpg,.jpeg"></span>
+          </label>
+          <button class="btn btn-primary" id="publish-btn" type="submit">Publicar actividad</button>
+          <p class="feedback" id="form-feedback" aria-live="polite"></p>
+        </form>
+      </section>
+      <aside class="panel">
+        <h2 style="font-size:1.5rem">Las ocho unidades</h2>
+        <p class="muted" style="margin:0">Toca una unidad para publicar en ella.</p>
+        <div class="teacher-units" id="teacher-units"></div>
+        <div class="side-links">
+          <a class="btn btn-soft" href="" id="link-submissions" target="_blank" rel="noopener">Abrir carpeta de tareas en Drive</a>
+          <a class="btn btn-soft" href="" id="link-published" target="_blank" rel="noopener">Abrir carpeta de actividades en Drive</a>
+          <a class="btn btn-soft" href="estudiante.html">Ver como estudiante</a>
+        </div>
+      </aside>
+    </div>
+    <section class="panel">
+      <div class="panel-title"><h2>Actividades publicadas</h2><span class="tag" id="published-count">0 publicaciones</span></div>
+      <div class="filters" id="teacher-filters" role="group" aria-label="Filtrar por unidad"></div>
+      <div id="published-list"></div>
+    </section>
+  </div>
+</main>
+<footer><div class="wrap footer-inner"><a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true">A</span><span>Aula <span class="brand-light">Lectoescritora</span></span></a><span>Panel docente. © <span id="year">2026</span></span></div></footer>
+<script src="js/config.js"></script><script src="js/app.js"></script>
+</body>
+</html>
