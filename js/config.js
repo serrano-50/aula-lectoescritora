@@ -13,7 +13,7 @@ window.AULA_CONFIG = {
   APP_IMAGE_DRIVE_ID: "1gNvYhS1lIEeA9CRRvSBIG4X3AtsR3FB_",
 
   // Enlace de descarga del APK cuando exista (puede ser un enlace de Drive o de GitHub Releases).
-  APK_URL: "",
+  APK_URL: "https://script.google.com/macros/s/AKfycbzrSAIYkeI3HK_Lx-2qolTRq19SCdDWcTEghTnfZxQ65i4zsy8IxSjLs79IkUhI8GBKiw/exec",
 
   // Carpeta de Drive donde llegan las tareas (botón de acceso rápido para el docente).
   SUBMISSIONS_FOLDER_URL: "https://drive.google.com/drive/folders/16pwgFSuTzFqMfNjrVy7oX49egifq5Wki",
